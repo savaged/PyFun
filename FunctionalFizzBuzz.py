@@ -18,8 +18,8 @@ def getVerbs(integers = []):
     return verbs
 
 def main():
-    start = 1
-    iterations = 16
+    start = int(input("start: "))
+    iterations = int(input("iterations: "))
     end = start + iterations
     integers = range(start, end)
     verbs = getVerbs(integers)
