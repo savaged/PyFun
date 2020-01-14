@@ -2,8 +2,12 @@ import time
 import datetime
 
 
-def getTimeStr():
-    return datetime.datetime.now().strftime('%H:%M.%S')
+def getDeltaStr(lhs, rhs):
+    return str(lhs - rhs)
+
+
+def getDateTime():
+    return datetime.datetime.now()
 
 
 def write(output):
@@ -15,13 +19,15 @@ def writeSplash():
 
 
 def writeClose():
-    print('\b\b\b\b\b\b\b\b' + getTimeStr())
+    print()
 
 
 def main():
+    start = getDateTime()
     writeSplash()
     while True:
-        write(getTimeStr())
+        now = getDateTime()
+        write(getDeltaStr(now, start))
         time.sleep(1)
 
 
