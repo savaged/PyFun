@@ -10,15 +10,15 @@ def getDeltaStr(lhs, rhs):
 
 
 def getHours(delta):
-    return int(round(delta.seconds / 3600, 0))
+    return delta.seconds // 3600
 
 
 def getMinutes(delta):
-    return int(round((delta.seconds / 60) % 60, 0))
+    return (delta.seconds // 60) % 60
 
 
 def getSeconds(delta):
-    return round(delta.seconds, 0)
+    return delta.seconds % 60 # TODO Get this working
 
 
 def getDateTime():
