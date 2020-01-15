@@ -4,9 +4,9 @@ import datetime
 
 def getDeltaStr(lhs, rhs):
     delta = lhs - rhs
-    return str(getHours(delta)) + ":" \
-        + str(getMinutes(delta)) + \
-        "." + str(getSeconds(delta))
+    return str(getHours(delta)).zfill(2) + ":" \
+        + str(getMinutes(delta)).zfill(2) + \
+        "." + str(getSeconds(delta)).zfill(2)
 
 
 def getHours(delta):
@@ -42,7 +42,6 @@ def main():
     writeSplash()
     while True:
         now = getDateTime()
-        write("           ")  # Hack!
         write("   " + getDeltaStr(now, start))
         time.sleep(1)
 
