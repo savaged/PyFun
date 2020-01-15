@@ -15,13 +15,13 @@ def writeSplash():
 
 
 def writeClose():
-    print('\b\b\b\b\b\b\b\b' + getTimeStr())
+    print("         ")
 
 
 def main():
     writeSplash()
     while True:
-        write(getTimeStr())
+        write("   " + getTimeStr())
         time.sleep(1)
 
 
