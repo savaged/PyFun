@@ -18,7 +18,7 @@ def getMinutes(delta):
 
 
 def getSeconds(delta):
-    return delta.seconds % 60 # TODO Get this working
+    return delta.seconds % 60
 
 
 def getDateTime():
@@ -42,6 +42,7 @@ def main():
     writeSplash()
     while True:
         now = getDateTime()
+        write("           ")  # Hack!
         write("   " + getDeltaStr(now, start))
         time.sleep(1)
 
