@@ -3,7 +3,22 @@ import datetime
 
 
 def getDeltaStr(lhs, rhs):
-    return str(lhs - rhs)
+    delta = lhs - rhs
+    return str(getHours(delta)) + ":" \
+        + str(getMinutes(delta)) + \
+        "." + str(getSeconds(delta))
+
+
+def getHours(delta):
+    return int(round(delta.seconds / 3600, 0))
+
+
+def getMinutes(delta):
+    return int(round((delta.seconds / 60) % 60, 0))
+
+
+def getSeconds(delta):
+    return round(delta.seconds, 0)
 
 
 def getDateTime():
@@ -27,7 +42,7 @@ def main():
     writeSplash()
     while True:
         now = getDateTime()
-        write(getDeltaStr(now, start))
+        write("   " + getDeltaStr(now, start))
         time.sleep(1)
 
 
