@@ -1,3 +1,6 @@
+# HardwareShop.py
+# Saskia Savage 20/04/2020
+
 VAT_RATE = 0.15
 
 
