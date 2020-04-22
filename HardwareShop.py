@@ -93,7 +93,7 @@ def createBuildingProduct():
 def createGardeningProduct():
     descriptionInput = input("Product description: ")
     priceInput = getPriceInput()
-    product = Building(descriptionInput, priceInput)
+    product = Gardening(descriptionInput, priceInput) 
     return product
 
 
@@ -116,7 +116,6 @@ def getProductQuantity():
             quantity = int(quantityInput)
         except ValueError:
             print("An integer value is required")
-
         if isinstance(quantity, int):
             break
     return quantity
