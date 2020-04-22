@@ -33,8 +33,6 @@ class Product:
 
     # e. Calculate payment due (total - discount + VAT)
     def calcPaymentDue(self, quantity):
-        if quantity < 1:
-            return 0
         discounted = self.calcDiscountedTotal(quantity)
         vat = self.calcVAT(quantity)
         paymentDue = discounted + vat
@@ -63,25 +61,89 @@ def outputProductPaymentDue(product, quantity):
           str(product.calcPaymentDue(quantity)))
 
 
+def getProductFromTypeSelection():
+    while True:
+        print("Select product type number from options below:")
+        print("\t1) Home")
+        print("\t2) Building")
+        print("\t3) Gardening")
+        productType = input("Type number: ")
+        if productType == "1":
+            return createHomeProduct()
+        elif productType == "2":
+            return createBuildingProduct()
+        elif productType == "3":
+            return createGardeningProduct()
+
+
+def createHomeProduct():
+    descriptionInput = input("Product description: ")
+    priceInput = getPriceInput()
+    product = Home(descriptionInput, priceInput)
+    return product
+
+
+def createBuildingProduct():
+    descriptionInput = input("Product description: ")
+    priceInput = getPriceInput()
+    product = Building(descriptionInput, priceInput)
+    return product
+
+
+def createGardeningProduct():
+    descriptionInput = input("Product description: ")
+    priceInput = getPriceInput()
+    product = Building(descriptionInput, priceInput)
+    return product
+
+
+def getPriceInput():
+    while True:
+        priceInput = input("Product price: ")
+        try:
+            price = float(priceInput)
+        except ValueError:
+            print("A monetary value is required")
+        if isinstance(price, float):
+            break
+    return price
+
+
+def getProductQuantity():
+    while True:
+        quantityInput = input("Product quantity: ")
+        try:
+            quantity = int(quantityInput)
+        except ValueError:
+            print("An integer value is required")
+
+        if isinstance(quantity, int):
+            break
+    return quantity
+
+
 def main():
-
-    product = Home("Taps", 12.99)
-    quantity = 3
-    outputProductPaymentDue(product, quantity)
-
-    product = Building("Bricks", 1.89)
-    quantity = 300
-    outputProductPaymentDue(product, quantity)
-
-    product = Gardening("Shovel", 11.20)
-    quantity = 2
-    outputProductPaymentDue(product, quantity)
-
-    product = Home("Bath tubs", 120)
-    quantity = 2
-    outputProductPaymentDue(product, quantity)
+    # Test Data:
+    #
+    # product = Home("Taps", 12.99)
+    # quantity = 3
+    #
+    # product = Building("Bricks", 1.89)
+    # quantity = 300
+    #
+    # product = Gardening("Shovel", 11.20)
+    # quantity = 2
+    #
+    # product = Home("Bath tubs", 120)
+    # quantity = 2
+    while True:
+        product = getProductFromTypeSelection()
+        quantity = getProductQuantity()
+        outputProductPaymentDue(product, quantity)
+        repeatInput = input("Repeat? (y/n):")
+        if repeatInput != "y":
+            break
 
 
 if __name__ == "__main__":
-
     main()
